@@ -8,4 +8,6 @@ import java.util.List;
 public interface FundService {
      void create(Fund fund);
      List<Fund> filterGreaterThan100();
+
+     Fund findOne(String name);
 }
