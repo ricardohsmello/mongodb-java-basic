@@ -7,6 +7,7 @@ import br.com.ricas.domain.util.DatabaseEnum;
 import br.com.ricas.domain.util.FundsFieldEnum;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.Document;
@@ -48,6 +49,20 @@ public class FundServiceImpl implements FundService {
         );
 
        return funds;
+
+    }
+
+    @Override
+    public Fund findOne(String name) {
+        MongoIterable<Fund> map = fundsCollection.find(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name)).map(
+                it -> new Fund(
+                        (String) it.get(FundsFieldEnum.NAME.name().toLowerCase()),
+                        (Double) it.get(FundsFieldEnum.VALUE.name().toLowerCase()),
+                        (Date) it.get(FundsFieldEnum.DATE.name().toLowerCase())
+                )
+        );
+
+        return map.first();
 
     }
 
