@@ -2,15 +2,8 @@ package br.com.ricas;
 
 import br.com.ricas.domain.entity.Fund;
 import br.com.ricas.domain.entity.service.FundServiceImpl;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.result.InsertOneResult;
-import org.bson.Document;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -30,8 +23,15 @@ public class Main {
 //        createFund("03",
 //                230.30,
 //                new Date());
-        findOne("03");
+//        findOne("03");
+//        updateOne();
+//        updateMany();
+//        deleteOne();
+//        deleteMany();
+        filterAggregate();
     }
+
+
 
     private static void createFund(String name, double value, Date date) {
         fundService.create(new Fund(name, value, date));
@@ -44,8 +44,36 @@ public class Main {
     }
 
     private static void findOne(String name) {
-        Fund one = fundService.findOne(name);
+        Fund one = fundService.findFirst(name);
         System.out.println(one);
+    }
+
+    private static void updateOne() {
+
+         fundService.updateOne(new Fund("03",
+                 504.0,
+                 new Date()));
+     }
+
+    private static void updateMany() {
+
+        String filterKey = "03";
+        Double newValue = 121.0;
+        Date newDate = new Date();
+
+        fundService.updateMany(filterKey, newValue, newDate);
+    }
+
+    private static void deleteOne() {
+        fundService.deleteOne("03");
+    }
+    private static void deleteMany() {
+
+        fundService.deleteMany("03");
+    }
+
+    private static void filterAggregate() {
+        fundService.filterAggregate();
     }
 
 }
