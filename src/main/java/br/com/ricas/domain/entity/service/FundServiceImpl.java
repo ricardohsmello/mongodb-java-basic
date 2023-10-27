@@ -16,6 +16,7 @@ import org.bson.conversions.Bson;
 import java.util.*;
 import java.util.logging.Logger;
 
+import static com.mongodb.client.model.Accumulators.sum;
 import static com.mongodb.client.model.Filters.gte;
 
 public class FundServiceImpl implements FundService {
@@ -140,7 +141,6 @@ public class FundServiceImpl implements FundService {
         Bson exclude = Projections.exclude("_id");
 
         AggregateIterable<Document> aggregate = fundsCollection.aggregate(
-
                 List.of(
                         Aggregates.match(eq1),
                         Aggregates.match(gte),
@@ -149,14 +149,43 @@ public class FundServiceImpl implements FundService {
                 )
         );
 
-
-
         for (Document document : aggregate) {
-
             System.out.println(document);
-
         }
 
+    }
+
+    @Override
+    public void filterAggregateGroupExportedLanguage() {
+
+
+
+        AggregateIterable<Document> aggregate = fundsCollection.aggregate(Arrays.asList(new Document("$group",
+                        new Document("_id", "$name")
+                                .append("total",
+                                        new Document("$count",
+                                                new Document()))),
+                new Document("$project",
+                        new Document("_id", 0L)
+                                .append("name", "$_id")
+                                .append("total", "$total"))));
+
+        for (Document document : aggregate) {
+            System.out.println(document);
+        }
+
+
+    }
+
+    @Override
+    public void filterAggregateGroup() {
+
+        Bson match = Aggregates.match(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "01"));
+        Bson group = Aggregates.group("$name", sum("soma", "$value"));
+
+        fundsCollection.aggregate(Arrays.asList(match, group)).forEach(
+                System.out::println
+        );
     }
 
 
