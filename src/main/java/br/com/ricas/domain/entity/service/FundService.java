@@ -1,13 +1,24 @@
 package br.com.ricas.domain.entity.service;
 
 import br.com.ricas.domain.entity.Fund;
-import org.bson.Document;
 
+import java.util.Date;
 import java.util.List;
 
 public interface FundService {
      void create(Fund fund);
      List<Fund> filterGreaterThan100();
 
-     Fund findOne(String name);
+     Fund findFirst(String name);
+
+     void updateOne(Fund fund);
+     void updateMany(String filterKey, Double newValue, Date newDate);
+
+     void deleteOne(String name);
+
+     void deleteMany(String name);
+
+     void transactionExample();
+
+     void filterAggregate();
 }
