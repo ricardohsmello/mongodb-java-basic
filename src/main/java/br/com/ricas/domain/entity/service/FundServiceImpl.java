@@ -5,24 +5,22 @@ import br.com.ricas.domain.entity.Fund;
 import br.com.ricas.domain.util.CollectionEnum;
 import br.com.ricas.domain.util.DatabaseEnum;
 import br.com.ricas.domain.util.FundsFieldEnum;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoIterable;
-import com.mongodb.client.model.Filters;
+import com.mongodb.client.*;
+import com.mongodb.client.model.*;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.InsertOneResult;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static com.mongodb.client.model.Filters.gte;
 
 public class FundServiceImpl implements FundService {
     private static final Logger logger = Logger.getLogger(String.valueOf(MongoConfig.class));
-    private final MongoCollection<Document> fundsCollection = MongoConfig.getInstance().getDatabase(DatabaseEnum.CERTIFICATION.name().toLowerCase()).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
+    public MongoCollection<Document> fundsCollection = MongoConfig.getInstance().getDatabase(DatabaseEnum.CERTIFICATION.name().toLowerCase()).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
 
     @Override
     public void create(Fund fund) {
@@ -53,7 +51,7 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
-    public Fund findOne(String name) {
+    public Fund findFirst(String name) {
         MongoIterable<Fund> map = fundsCollection.find(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name)).map(
                 it -> new Fund(
                         (String) it.get(FundsFieldEnum.NAME.name().toLowerCase()),
@@ -63,6 +61,101 @@ public class FundServiceImpl implements FundService {
         );
 
         return map.first();
+
+    }
+
+    @Override
+    public void updateOne(Fund fund) {
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName());
+        Bson set = Updates.set(FundsFieldEnum.VALUE.name().toLowerCase(), fund.getValue());
+
+        UpdateResult updateResult = fundsCollection.updateOne(eq, set);
+
+        System.out.println(updateResult.getMatchedCount());
+        System.out.println(updateResult.getModifiedCount());
+        System.out.println(updateResult.getUpsertedId());
+
+    }
+
+    @Override
+    public void updateMany(String filterKey, Double newValue, Date newDate) {
+
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), filterKey);
+        Bson set = Updates.combine(
+                Updates.set(FundsFieldEnum.VALUE.name().toLowerCase(), newValue),
+                Updates.set(FundsFieldEnum.DATE.name().toLowerCase(), newDate)
+        );
+
+        UpdateResult updateResult = fundsCollection.updateMany(eq, set);
+
+        System.out.println(updateResult.getMatchedCount());
+        System.out.println(updateResult.getModifiedCount());
+        System.out.println(updateResult.getUpsertedId());
+    }
+
+    @Override
+    public void deleteOne(String name) {
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name);
+        DeleteResult deleteResult = fundsCollection.deleteOne(eq);
+        System.out.println(deleteResult.getDeletedCount());
+    }
+
+    @Override
+    public void deleteMany(String name) {
+
+
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name);
+        DeleteResult deleteResult = fundsCollection.deleteMany(eq);
+        System.out.println(deleteResult.getDeletedCount());
+    }
+
+    @Override
+    public void transactionExample() {
+
+
+        ClientSession clientSession = MongoConfig.getInstance().startSession();
+
+        TransactionBody txnBody = new TransactionBody() {
+            @Override
+            public String execute() {
+                // here we can do all the updates that will be validate during the session.
+                return "transaction succesfully";
+            }
+
+        };
+        try {
+
+        } catch(RuntimeException e) {
+
+        } finally {
+            clientSession.close();
+        }
+    }
+
+    @Override
+    public void filterAggregate() {
+        Bson eq1 = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "03");
+        Bson gte = Filters.gte(FundsFieldEnum.VALUE.name().toLowerCase(), 101.0);
+        Bson include = Projections.include(FundsFieldEnum.NAME.name().toLowerCase());
+        Bson exclude = Projections.exclude("_id");
+
+        AggregateIterable<Document> aggregate = fundsCollection.aggregate(
+
+                List.of(
+                        Aggregates.match(eq1),
+                        Aggregates.match(gte),
+                        Aggregates.project(include),
+                        Aggregates.project(exclude)
+                )
+        );
+
+
+
+        for (Document document : aggregate) {
+
+            System.out.println(document);
+
+        }
 
     }
 
