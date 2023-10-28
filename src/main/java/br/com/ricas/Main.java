@@ -35,7 +35,6 @@ public class Main {
         filterSortWithProject();
     }
 
-
     private static void createFund(String name, double value, Date date) {
         fundService.create(new Fund(name, value, date));
     }
