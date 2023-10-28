@@ -40,14 +40,14 @@ public class FundServiceImpl implements FundService {
         List<Fund> funds = new ArrayList<>();
         values.forEach(
                 it ->
-                    funds.add(new Fund(
-                            (String) it.get(FundsFieldEnum.NAME.name().toLowerCase()),
-                            (Double) it.get(FundsFieldEnum.VALUE.name().toLowerCase()),
-                            (Date) it.get(FundsFieldEnum.DATE.name().toLowerCase())
-                    ))
+                        funds.add(new Fund(
+                                (String) it.get(FundsFieldEnum.NAME.name().toLowerCase()),
+                                (Double) it.get(FundsFieldEnum.VALUE.name().toLowerCase()),
+                                (Date) it.get(FundsFieldEnum.DATE.name().toLowerCase())
+                        ))
         );
 
-       return funds;
+        return funds;
 
     }
 
@@ -126,7 +126,7 @@ public class FundServiceImpl implements FundService {
         };
         try {
 
-        } catch(RuntimeException e) {
+        } catch (RuntimeException e) {
 
         } finally {
             clientSession.close();
@@ -159,7 +159,6 @@ public class FundServiceImpl implements FundService {
     public void filterAggregateGroupExportedLanguage() {
 
 
-
         AggregateIterable<Document> aggregate = fundsCollection.aggregate(Arrays.asList(new Document("$group",
                         new Document("_id", "$name")
                                 .append("total",
@@ -181,11 +180,33 @@ public class FundServiceImpl implements FundService {
     public void filterAggregateGroup() {
 
         Bson match = Aggregates.match(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "01"));
+
         Bson group = Aggregates.group("$name", sum("soma", "$value"));
 
         fundsCollection.aggregate(Arrays.asList(match, group)).forEach(
                 System.out::println
         );
+    }
+
+    @Override
+    public void filterSortWithProject() {
+
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "03");
+
+        Bson sort = Aggregates.sort(Sorts.descending(FundsFieldEnum.VALUE.name().toLowerCase()));
+        Bson project = Aggregates.project(Projections.exclude("_id"));
+
+        AggregateIterable<Document> aggregate = fundsCollection.aggregate(List.of(
+                        Aggregates.match(eq),
+                        sort,
+                        project
+                )
+        );
+
+        aggregate.forEach(
+                System.out::println
+        );
+
     }
 
 
