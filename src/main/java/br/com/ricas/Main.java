@@ -62,7 +62,6 @@ public class Main {
         String filterKey = "03";
         Double newValue = 121.0;
         Date newDate = new Date();
-
         fundService.updateMany(filterKey, newValue, newDate);
     }
 
