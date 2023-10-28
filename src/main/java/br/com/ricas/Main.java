@@ -54,12 +54,10 @@ public class Main {
     }
 
     private static void updateOne() {
-
          fundService.updateOne(new Fund("03",
                  504.0,
                  new Date()));
      }
-
     private static void updateMany() {
 
         String filterKey = "03";
