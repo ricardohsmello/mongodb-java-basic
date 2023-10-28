@@ -28,8 +28,13 @@ public class Main {
 //        updateMany();
 //        deleteOne();
 //        deleteMany();
-        filterAggregate();
+//        filterAggregate();
+//
+//        filterAggregateGroupExportedLanguage();
+//       filterAggregateGroup();
+        filterSortWithProject();
     }
+
 
 
 
@@ -74,6 +79,17 @@ public class Main {
 
     private static void filterAggregate() {
         fundService.filterAggregate();
+    }
+
+    private static void filterAggregateGroupExportedLanguage() {
+        fundService.filterAggregateGroupExportedLanguage();
+    }
+
+    private static void filterAggregateGroup() {
+        fundService.filterAggregateGroup();
+    }
+    private static void filterSortWithProject() {
+        fundService.filterSortWithProject();
     }
 
 }
