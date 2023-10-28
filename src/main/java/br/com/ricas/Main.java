@@ -31,7 +31,7 @@ public class Main {
     }
 
     private static void createFund(String name, double value, Date date) {
-        fundService.create(new Fund(name, value, date));
+        fundService.insertOne(new Fund(name, value, date));
     }
 
     private static void filterGreaterThan100() {
