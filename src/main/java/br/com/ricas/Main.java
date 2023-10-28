@@ -59,7 +59,6 @@ public class Main {
                  new Date()));
      }
     private static void updateMany() {
-
         String filterKey = "03";
         Double newValue = 121.0;
         Date newDate = new Date();
