@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface FundService {
-     void create(Fund fund);
+     void insertOne(Fund fund);
      List<Fund> filterGreaterThan100();
 
      Fund findFirst(String name);
