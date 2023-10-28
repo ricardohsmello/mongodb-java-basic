@@ -24,20 +24,18 @@ public class FundServiceImpl implements FundService {
     public MongoCollection<Document> fundsCollection = MongoConfig.getInstance().getDatabase(DatabaseEnum.CERTIFICATION.name().toLowerCase()).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
 
     @Override
-    public void create(Fund fund) {
+    public void insertOne(Fund fund) {
         logger.info("Preparing to create a new Document: " + fund);
-
         InsertOneResult insertOneResult = fundsCollection.insertOne(createDocument(fund));
-
         logger.info("Fund create successfully " + insertOneResult.getInsertedId());
-
     }
 
     @Override
     public List<Fund> filterGreaterThan100() {
-
-        FindIterable<Document> values = fundsCollection.find(Filters.and(gte(FundsFieldEnum.VALUE.name().toLowerCase(), 100.0)));
+        var and = Filters.and(gte(FundsFieldEnum.VALUE.name().toLowerCase(), 100.0));
+        FindIterable<Document> values = fundsCollection.find(and);
         List<Fund> funds = new ArrayList<>();
+
         values.forEach(
                 it ->
                         funds.add(new Fund(
@@ -48,7 +46,6 @@ public class FundServiceImpl implements FundService {
         );
 
         return funds;
-
     }
 
     @Override
@@ -75,7 +72,6 @@ public class FundServiceImpl implements FundService {
         System.out.println(updateResult.getMatchedCount());
         System.out.println(updateResult.getModifiedCount());
         System.out.println(updateResult.getUpsertedId());
-
     }
 
     @Override
@@ -112,8 +108,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void transactionExample() {
-
-
         ClientSession clientSession = MongoConfig.getInstance().startSession();
 
         TransactionBody txnBody = new TransactionBody() {
