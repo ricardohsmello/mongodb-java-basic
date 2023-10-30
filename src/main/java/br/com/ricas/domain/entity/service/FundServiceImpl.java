@@ -165,7 +165,6 @@ public class FundServiceImpl implements FundService {
         for (Document document : aggregate) {
             System.out.println(document);
         }
-
     }
 
     @Override
