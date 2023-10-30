@@ -197,7 +197,6 @@ public class FundServiceImpl implements FundService {
         );
     }
 
-
     public Document createDocument(Fund fund) {
         return new Document()
                 .append(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName())
