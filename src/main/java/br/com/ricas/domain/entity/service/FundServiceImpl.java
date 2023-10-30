@@ -169,7 +169,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void filterAggregateGroup() {
-
         Bson match = Aggregates.match(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "01"));
 
         Bson group = Aggregates.group("$name", sum("soma", "$value"));
