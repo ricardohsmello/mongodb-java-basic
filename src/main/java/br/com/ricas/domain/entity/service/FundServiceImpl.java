@@ -59,7 +59,6 @@ public class FundServiceImpl implements FundService {
         );
 
         return map.first();
-
     }
 
     @Override
