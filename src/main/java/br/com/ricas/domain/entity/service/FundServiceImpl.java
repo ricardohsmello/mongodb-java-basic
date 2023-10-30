@@ -99,7 +99,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void deleteMany(String name) {
-
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name);
         DeleteResult deleteResult = fundsCollection.deleteMany(eq);
         System.out.println(deleteResult.getDeletedCount());
