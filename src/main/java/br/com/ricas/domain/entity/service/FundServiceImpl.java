@@ -180,7 +180,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void filterSortWithProject() {
-
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "03");
 
         Bson sort = Aggregates.sort(Sorts.descending(FundsFieldEnum.VALUE.name().toLowerCase()));
