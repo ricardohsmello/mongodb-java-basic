@@ -76,7 +76,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void updateMany(String filterKey, Double newValue, Date newDate) {
-
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), filterKey);
         Bson set = Updates.combine(
                 Updates.set(FundsFieldEnum.VALUE.name().toLowerCase(), newValue),
