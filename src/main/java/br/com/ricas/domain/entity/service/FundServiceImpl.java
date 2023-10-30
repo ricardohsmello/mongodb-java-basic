@@ -21,7 +21,8 @@ import static com.mongodb.client.model.Filters.gte;
 
 public class FundServiceImpl implements FundService {
     private static final Logger logger = Logger.getLogger(String.valueOf(MongoConfig.class));
-    public MongoCollection<Document> fundsCollection = MongoConfig.getInstance().getDatabase(DatabaseEnum.CERTIFICATION.name().toLowerCase()).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
+    public MongoCollection<Document> fundsCollection =
+            MongoConfig.getInstance().getDatabase(DatabaseEnum.CERTIFICATION.name().toLowerCase()).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
 
     @Override
     public void insertOne(Fund fund) {
