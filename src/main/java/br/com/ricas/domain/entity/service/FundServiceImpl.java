@@ -148,7 +148,6 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public void filterAggregateGroupExportedLanguage() {
-
         AggregateIterable<Document> aggregate = fundsCollection.aggregate(Arrays.asList(new Document("$group",
                         new Document("_id", "$name")
                                 .append("total",
