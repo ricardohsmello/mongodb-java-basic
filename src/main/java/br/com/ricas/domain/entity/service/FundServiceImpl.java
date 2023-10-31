@@ -115,7 +115,6 @@ public class FundServiceImpl implements FundService {
                 // here we can do all the updates that will be validate during the session.
                 return "transaction succesfully";
             }
-
         };
         try {
 
@@ -145,7 +144,6 @@ public class FundServiceImpl implements FundService {
         for (Document document : aggregate) {
             System.out.println(document);
         }
-
     }
 
     @Override
