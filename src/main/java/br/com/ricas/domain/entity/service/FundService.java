@@ -3,6 +3,7 @@ package br.com.ricas.domain.entity.service;
 import br.com.ricas.domain.entity.Fund;
 import java.util.Date;
 import java.util.List;
+
 public interface FundService {
      void insertOne(Fund fund);
      List<Fund> filterGreaterThan100();
