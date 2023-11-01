@@ -16,7 +16,6 @@ public interface FundService {
      void deleteMany(String name);
 
      void transactionExample();
-
      void filterAggregate();
      void filterAggregateGroupExportedLanguage();
      void filterAggregateGroup();
