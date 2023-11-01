@@ -10,7 +10,6 @@ public interface FundService {
      Fund findFirst(String name);
      void updateOne(Fund fund);
      void updateMany(String filterKey, Double newValue, Date newDate);
-
      void deleteOne(String name);
      void deleteMany(String name);
      void transactionExample();
