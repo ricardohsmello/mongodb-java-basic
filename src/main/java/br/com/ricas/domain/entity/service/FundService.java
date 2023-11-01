@@ -12,7 +12,6 @@ public interface FundService {
      void updateMany(String filterKey, Double newValue, Date newDate);
 
      void deleteOne(String name);
-
      void deleteMany(String name);
      void transactionExample();
      void filterAggregate();
