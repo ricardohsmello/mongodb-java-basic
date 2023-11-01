@@ -18,3 +18,4 @@ public interface FundService {
      void filterAggregateGroup();
      void filterSortWithProject();
 }
+
