@@ -8,7 +8,6 @@ public interface FundService {
      void insertOne(Fund fund);
      List<Fund> filterGreaterThan100();
      Fund findFirst(String name);
-
      void updateOne(Fund fund);
      void updateMany(String filterKey, Double newValue, Date newDate);
 
