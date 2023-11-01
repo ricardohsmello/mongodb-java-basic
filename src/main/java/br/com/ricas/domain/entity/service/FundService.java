@@ -18,7 +18,6 @@ public interface FundService {
      void transactionExample();
 
      void filterAggregate();
-
      void filterAggregateGroupExportedLanguage();
      void filterAggregateGroup();
      void filterSortWithProject();
