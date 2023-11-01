@@ -20,7 +20,6 @@ public interface FundService {
      void filterAggregate();
 
      void filterAggregateGroupExportedLanguage();
-
      void filterAggregateGroup();
      void filterSortWithProject();
 }
