@@ -60,7 +60,6 @@ public class Main {
         fundService.deleteOne("03");
     }
     private static void deleteMany() {
-
         fundService.deleteMany("03");
     }
 
