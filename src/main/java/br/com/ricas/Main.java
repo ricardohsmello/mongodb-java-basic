@@ -62,7 +62,6 @@ public class Main {
     private static void deleteMany() {
         fundService.deleteMany("03");
     }
-
     private static void filterAggregate() {
         fundService.filterAggregate();
     }
