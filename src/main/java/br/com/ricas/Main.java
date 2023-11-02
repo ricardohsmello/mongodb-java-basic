@@ -66,7 +66,6 @@ public class Main {
     private static void filterAggregate() {
         fundService.filterAggregate();
     }
-
     private static void filterAggregateGroupExportedLanguage() {
         fundService.filterAggregateGroupExportedLanguage();
     }
