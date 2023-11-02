@@ -11,7 +11,6 @@ public class Main {
 //        createFund("01",
 //                12.0,
 //                new Date());
-//
 //        createFund("02",
 //                50.30,
 //                new Date());
