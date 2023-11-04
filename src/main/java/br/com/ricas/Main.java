@@ -56,7 +56,6 @@ public class Main {
         Date newDate = new Date();
         fundService.updateMany(filterKey, newValue, newDate);
     }
-
     private static void deleteOne() {
         fundService.deleteOne("03");
     }
