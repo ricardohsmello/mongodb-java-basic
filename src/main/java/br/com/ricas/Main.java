@@ -45,7 +45,6 @@ public class Main {
         Fund one = fundService.findFirst(name);
         System.out.println(one);
     }
-
     private static void updateOne() {
          fundService.updateOne(new Fund("03",
                  504.0,
