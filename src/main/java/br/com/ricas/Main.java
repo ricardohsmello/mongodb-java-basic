@@ -74,5 +74,4 @@ public class Main {
     private static void filterSortWithProject() {
         fundService.filterSortWithProject();
     }
-
 }
