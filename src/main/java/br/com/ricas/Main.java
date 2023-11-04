@@ -36,7 +36,6 @@ public class Main {
     private static void createFund(String name, double value, Date date) {
         fundService.insertOne(new Fund(name, value, date));
     }
-
     private static void filterGreaterThan100() {
         fundService.filterGreaterThan100().forEach(
                 it -> System.out.println(it)
