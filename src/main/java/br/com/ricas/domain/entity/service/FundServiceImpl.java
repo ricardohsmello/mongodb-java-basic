@@ -191,6 +191,12 @@ public class FundServiceImpl implements FundService {
         );
     }
 
+    @Override
+    public void createIndex() {
+        Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), 1);
+        fundsCollection.createIndex(eq);
+    }
+
     public Document createDocument(Fund fund) {
         return new Document()
                 .append(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName())
