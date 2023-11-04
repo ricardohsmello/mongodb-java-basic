@@ -16,4 +16,5 @@ public interface FundService {
      void filterAggregateGroupExportedLanguage();
      void filterAggregateGroup();
      void filterSortWithProject();
-     void createIndex();}
+     void createIndex();
+}
