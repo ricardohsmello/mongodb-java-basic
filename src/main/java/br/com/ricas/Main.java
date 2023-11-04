@@ -26,9 +26,14 @@ public class Main {
 //        filterAggregate();
 //        filterAggregateGroupExportedLanguage();
 //        filterAggregateGroup();
-        filterSortWithProject();
+//        filterSortWithProject();
+        createIndex();
     }
 
+    private static void createIndex()  {
+        fundService.createIndex();
+
+    }
     private static void createFund(String name, double value, Date date) {
         fundService.insertOne(new Fund(name, value, date));
     }
