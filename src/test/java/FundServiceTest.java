@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 public class FundServiceTest {
-
     @Mock
     private MongoCollection<Document> fundsCollection;
 
