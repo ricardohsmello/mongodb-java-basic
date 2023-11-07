@@ -175,7 +175,6 @@ public class FundServiceImpl implements FundService {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "03");
         Bson sort = Aggregates.sort(Sorts.descending(FundsFieldEnum.VALUE.name().toLowerCase()));
         Bson project = Aggregates.project(Projections.exclude("_id"));
-
         AggregateIterable<Document> aggregate = fundsCollection.aggregate(List.of(
                         Aggregates.match(eq),
                         sort,
