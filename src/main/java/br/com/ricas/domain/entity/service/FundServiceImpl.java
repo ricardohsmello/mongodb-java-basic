@@ -187,7 +187,6 @@ public class FundServiceImpl implements FundService {
                 System.out::println
         );
     }
-
     @Override
     public void createIndex() {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), 1);
