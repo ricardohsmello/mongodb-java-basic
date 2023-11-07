@@ -1,4 +1,5 @@
 package br.com.ricas.domain.util;
 
-public enum DatabaseEnum {    CERTIFICATION
+public enum DatabaseEnum {
+    CERTIFICATION
 }
