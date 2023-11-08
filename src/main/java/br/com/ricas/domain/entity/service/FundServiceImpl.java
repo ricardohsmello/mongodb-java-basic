@@ -192,6 +192,12 @@ public class FundServiceImpl implements FundService {
         fundsCollection.createIndex(eq);
     }
 
+    @Override
+    public void createCollection() {
+
+
+    }
+
     public Document createDocument(Fund fund) {
         return new Document()
                 .append(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName())
