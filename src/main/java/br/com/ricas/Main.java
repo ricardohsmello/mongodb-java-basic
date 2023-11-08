@@ -1,7 +1,12 @@
 package br.com.ricas;
 
+import br.com.ricas.application.config.MongoConfig;
 import br.com.ricas.domain.entity.Fund;
 import br.com.ricas.domain.entity.service.FundServiceImpl;
+import br.com.ricas.domain.util.CollectionEnum;
+import br.com.ricas.domain.util.DatabaseEnum;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
 
 import java.util.Date;
 
@@ -27,7 +32,16 @@ public class Main {
 //        filterAggregateGroupExportedLanguage();
 //        filterAggregateGroup();
 //        filterSortWithProject();
-        createIndex();
+//        createIndex();
+        createCollection();
+    }
+
+    private static void createCollection() {
+
+        MongoConfig.getInstance().getDatabase(
+                "new_database_replication".toLowerCase()
+        ).createCollection("collection01");
+
     }
 
     private static void createIndex()  {
