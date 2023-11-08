@@ -17,4 +17,5 @@ public interface FundService {
      void filterAggregateGroup();
      void filterSortWithProject();
      void createIndex();
+     void createCollection();
 }
