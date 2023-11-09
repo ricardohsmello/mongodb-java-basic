@@ -195,7 +195,6 @@ public class FundServiceImpl implements FundService {
     @Override
     public void createCollection() {
 
-
     }
 
     public Document createDocument(Fund fund) {
