@@ -28,7 +28,6 @@ public class Main {
 //        updateMany();
 //        deleteOne();
 //        deleteMany();
-//        filterAggregate();
         createCollection();
     }
 
