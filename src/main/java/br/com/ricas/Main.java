@@ -30,7 +30,6 @@ public class Main {
 //        deleteMany();
 //        filterAggregate();
 //        filterAggregateGroupExportedLanguage();
-//        filterAggregateGroup();
 
         createCollection();
     }
