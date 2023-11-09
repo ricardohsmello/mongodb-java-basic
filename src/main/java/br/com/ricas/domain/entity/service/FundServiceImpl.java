@@ -160,7 +160,6 @@ public class FundServiceImpl implements FundService {
             System.out.println(document);
         }
     }
-
     @Override
     public void filterAggregateGroup() {
         Bson match = Aggregates.match(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "01"));
