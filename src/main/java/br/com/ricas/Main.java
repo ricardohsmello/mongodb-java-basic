@@ -23,7 +23,6 @@ public class Main {
 //        createFund("03",
 //                230.30,
 //                new Date());
-//        deleteMany();
         createCollection();
     }
 
