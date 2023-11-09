@@ -32,7 +32,7 @@ public class Main {
 //        filterAggregateGroupExportedLanguage();
 //        filterAggregateGroup();
 //        filterSortWithProject();
-//        createIndex();
+
         createCollection();
     }
 
