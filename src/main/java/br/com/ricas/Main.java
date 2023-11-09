@@ -26,7 +26,6 @@ public class Main {
 //        findOne("03");
 //        updateOne();
 //        updateMany();
-//        deleteOne();
 //        deleteMany();
         createCollection();
     }
