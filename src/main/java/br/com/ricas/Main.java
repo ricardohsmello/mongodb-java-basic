@@ -25,7 +25,6 @@ public class Main {
 //                new Date());
 //        findOne("03");
 //        updateOne();
-//        updateMany();
 //        deleteMany();
         createCollection();
     }
