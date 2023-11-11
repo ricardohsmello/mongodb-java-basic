@@ -41,6 +41,7 @@ public class Main {
                 it -> System.out.println(it)
         );
     }
+
     private static void findOne(String name) {
         Fund one = fundService.findFirst(name);
         System.out.println(one);
