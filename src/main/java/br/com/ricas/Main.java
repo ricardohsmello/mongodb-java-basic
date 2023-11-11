@@ -24,13 +24,10 @@ public class Main {
 //                new Date());
         createCollection();
     }
-
     private static void createCollection() {
-
         MongoConfig.getInstance().getDatabase(
                 "new_database_replication".toLowerCase()
         ).createCollection("collection01");
-
     }
 
     private static void createIndex()  {
