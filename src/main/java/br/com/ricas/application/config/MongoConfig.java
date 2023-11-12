@@ -7,10 +7,9 @@ import java.util.logging.Logger;
 
 public class MongoConfig {
 
-    private static final String CONNECTION_STRING = "";
+    private static final String CONNECTION_STRING = "mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=rs1";
     private static MongoClient mongoClient;
     private static final Logger logger = Logger.getLogger(String.valueOf(MongoConfig.class));
-
 
     // Private constructor to prevent direct instantiation
     private MongoConfig() {
@@ -20,7 +19,6 @@ public class MongoConfig {
             logger.info(exception.getLocalizedMessage());
         }
     }
-
     // Public method to get the instance of the MongoClient
     public static MongoClient getInstance() {
         if (mongoClient == null) {
