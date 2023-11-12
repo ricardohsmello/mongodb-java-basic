@@ -6,7 +6,6 @@ import com.mongodb.client.MongoClients;
 import java.util.logging.Logger;
 
 public class MongoConfig {
-
     private static final String CONNECTION_STRING = "mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=rs1";
     private static MongoClient mongoClient;
     private static final Logger logger = Logger.getLogger(String.valueOf(MongoConfig.class));
