@@ -2,7 +2,6 @@ package br.com.ricas.application.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-
 import java.util.logging.Logger;
 
 public class MongoConfig {
