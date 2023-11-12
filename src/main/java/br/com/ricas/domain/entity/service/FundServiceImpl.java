@@ -67,7 +67,6 @@ public class FundServiceImpl implements FundService {
     public void updateOne(Fund fund) {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName());
         Bson set = Updates.set(FundsFieldEnum.VALUE.name().toLowerCase(), fund.getValue());
-
         UpdateResult updateResult = fundsCollection.updateOne(eq, set);
 
         System.out.println(updateResult.getMatchedCount());
