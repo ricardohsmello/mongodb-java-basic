@@ -20,7 +20,6 @@ public class Main {
 //                50.30,
 //                new Date());
 //        createFund("03",
-//                230.30,
         createCollection();
     }
     private static void createCollection() {
