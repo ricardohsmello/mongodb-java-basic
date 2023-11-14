@@ -6,7 +6,6 @@ import br.com.ricas.domain.entity.service.FundServiceImpl;
 import br.com.ricas.domain.util.CollectionEnum;
 import br.com.ricas.domain.util.DatabaseEnum;
 import com.mongodb.client.MongoCollection;
-import org.bson.Document;
 
 import java.util.Date;
 
