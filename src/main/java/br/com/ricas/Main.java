@@ -3,7 +3,6 @@ package br.com.ricas;
 import br.com.ricas.application.config.MongoConfig;
 import br.com.ricas.domain.entity.Fund;
 import br.com.ricas.domain.entity.service.FundServiceImpl;
-import br.com.ricas.domain.util.DatabaseEnum;
 import com.mongodb.client.MongoCollection;
 
 import java.util.Date;
