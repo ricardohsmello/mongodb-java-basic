@@ -28,7 +28,6 @@ public class Main {
                 "new_database_replication".toLowerCase()
         ).createCollection("collection01");
     }
-
     private static void createIndex()  {
         fundService.createIndex();
     }
