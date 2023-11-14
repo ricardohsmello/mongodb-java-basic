@@ -71,7 +71,6 @@ public class FundServiceImpl implements FundService {
         System.out.println(updateResult.getModifiedCount());
         System.out.println(updateResult.getUpsertedId());
     }
-
     @Override
     public void updateMany(String filterKey, Double newValue, Date newDate) {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), filterKey);
