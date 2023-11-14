@@ -61,11 +61,11 @@ public class FundServiceImpl implements FundService {
         );
         return map.first();
     }
-
     @Override
     public void updateOne(Fund fund) {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName());
         Bson set = Updates.set(FundsFieldEnum.VALUE.name().toLowerCase(), fund.getValue());
+
         UpdateResult updateResult = fundsCollection.updateOne(eq, set);
         System.out.println(updateResult.getMatchedCount());
         System.out.println(updateResult.getModifiedCount());
