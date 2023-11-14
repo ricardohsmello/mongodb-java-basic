@@ -13,7 +13,6 @@ import java.util.Date;
 public class Main {
     static FundServiceImpl fundService = new FundServiceImpl();
     public static void main(String[] args) {
-//                new Date());
         createCollection();
     }
     private static void createCollection() {
