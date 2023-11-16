@@ -96,7 +96,6 @@ public class FundServiceImpl implements FundService {
         DeleteResult deleteResult = fundsCollection.deleteMany(eq);
         System.out.println(deleteResult.getDeletedCount());
     }
-
     @Override
     public void transactionExample() {
         ClientSession clientSession = MongoConfig.getInstance().startSession();
