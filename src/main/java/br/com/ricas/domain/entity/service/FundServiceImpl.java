@@ -114,7 +114,6 @@ public class FundServiceImpl implements FundService {
             clientSession.close();
         }
     }
-
     @Override
     public void filterAggregate() {
         Bson eq1 = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), "03");
