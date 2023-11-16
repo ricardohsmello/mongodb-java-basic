@@ -134,7 +134,6 @@ public class FundServiceImpl implements FundService {
             System.out.println(document);
         }
     }
-
     @Override
     public void filterAggregateGroupExportedLanguage() {
         AggregateIterable<Document> aggregate = fundsCollection.aggregate(Arrays.asList(new Document("$group",
