@@ -46,7 +46,6 @@ public class FundServiceImpl implements FundService {
                                 (Date) it.get(FundsFieldEnum.DATE.name().toLowerCase())
                         ))
         );
-
         return funds;
     }
 
