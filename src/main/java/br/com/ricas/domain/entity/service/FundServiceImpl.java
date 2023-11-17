@@ -89,7 +89,6 @@ public class FundServiceImpl implements FundService {
         DeleteResult deleteResult = fundsCollection.deleteOne(eq);
         System.out.println(deleteResult.getDeletedCount());
     }
-
     @Override
     public void deleteMany(String name) {
         Bson eq = Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name);
