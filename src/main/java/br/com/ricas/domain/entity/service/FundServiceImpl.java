@@ -29,7 +29,6 @@ public class FundServiceImpl implements FundService {
         InsertOneResult insertOneResult = fundsCollection.insertOne(createDocument(fund));
         logger.info("Fund create successfully " + insertOneResult.getInsertedId());
     }
-
     @Override
     public List<Fund> filterGreaterThan100() {
         var and = Filters.and(gte(FundsFieldEnum.VALUE.name().toLowerCase(), 100.0));
