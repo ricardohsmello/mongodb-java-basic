@@ -45,7 +45,6 @@ public class FundServiceImpl implements FundService {
         );
         return funds;
     }
-
     @Override
     public Fund findFirst(String name) {
         MongoIterable<Fund> map = fundsCollection.find(Filters.eq(FundsFieldEnum.NAME.name().toLowerCase(), name)).map(
