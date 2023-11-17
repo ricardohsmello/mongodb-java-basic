@@ -23,7 +23,6 @@ public class FundServiceImpl implements FundService {
                     DatabaseEnum.CERTIFICATION.name().toLowerCase()
             ).getCollection(CollectionEnum.FUNDS.name().toLowerCase());
 
-
     @Override
     public void insertOne(Fund fund) {
         logger.info("Preparing to create a new Document: " + fund);
