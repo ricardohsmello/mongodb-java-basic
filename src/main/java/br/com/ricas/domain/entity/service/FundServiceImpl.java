@@ -74,7 +74,6 @@ public class FundServiceImpl implements FundService {
                 Updates.set(FundsFieldEnum.DATE.name().toLowerCase(), newDate)
         );
 
-
         UpdateResult updateResult = fundsCollection.updateMany(eq, set);
 
         System.out.println(updateResult.getMatchedCount());
