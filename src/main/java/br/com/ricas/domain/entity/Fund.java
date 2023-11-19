@@ -17,7 +17,6 @@ public class Fund {
         this.value = value;
         this.date = date;
     }
-
     public void setName(String name) {
         this.name = name;
     }
