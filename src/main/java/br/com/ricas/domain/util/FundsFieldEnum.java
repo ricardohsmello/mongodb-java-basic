@@ -6,3 +6,4 @@ public enum FundsFieldEnum {
     DATE
 }
 
+
