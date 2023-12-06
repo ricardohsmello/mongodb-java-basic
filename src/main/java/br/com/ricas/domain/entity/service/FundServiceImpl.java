@@ -180,7 +180,6 @@ public class FundServiceImpl implements FundService {
     @Override
     public void createCollection() {
     }
-
     public Document createDocument(Fund fund) {
         return new Document()
                 .append(FundsFieldEnum.NAME.name().toLowerCase(), fund.getName())
