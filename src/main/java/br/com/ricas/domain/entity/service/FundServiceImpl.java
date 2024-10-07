@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.logging.Logger;
 import static com.mongodb.client.model.Accumulators.sum;
 import static com.mongodb.client.model.Filters.gte;
+
 public class FundServiceImpl implements FundService {
     private static final Logger logger = Logger.getLogger(String.valueOf(MongoConfig.class));
     public MongoCollection<Document> fundsCollection =
